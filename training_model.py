@@ -11,3 +11,7 @@ from pyspark.ml.tuning import CrossValidator, ParamGridBuilder
 from pyspark.ml.classification import MultilayerPerceptronClassifier
 #Create spark session, connect to master and worker nodes
 spark = SparkSession.builder.master('spark://<hostip>:7077').appName('training_model').getOrCreate()
+
+#Read data into dataframes
+training_set = spark.read.csv("TrainingDataset.csv", header=True, inferSchema= True, sep=';')
+validation_set = spark.read.csv("ValidationDataset.csv", header=True, inferSchema= True, sep=';')
