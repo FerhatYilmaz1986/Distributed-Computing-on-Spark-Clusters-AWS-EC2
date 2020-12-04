@@ -11,4 +11,16 @@ spark = SparkSession.builder.master('local[*]').appName('Predict_model').getOrCr
 test_set =spark.read.csv(sys.argv[-1], header=True, inferSchema= True, sep=';')
 
 # Create feature vector
-
+assembler = VectorAssembler(inputCols=[test_set.columns[0],
+ test_set.columns[1],
+ test_set.columns[2],
+ test_set.columns[3],
+ test_set.columns[4],
+ test_set.columns[5],
+ test_set.columns[6],
+ test_set.columns[7],
+ test_set.columns[8],
+ test_set.columns[9],
+ test_set.columns[10]],outputCol = 'features')
+test_assembled = assembler.transform(test_set)
+test_assembled = test_assembled.select(test_assembled.columns[-1], test_assembled.columns[-2])
