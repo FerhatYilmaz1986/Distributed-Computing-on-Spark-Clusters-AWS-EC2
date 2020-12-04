@@ -24,3 +24,6 @@ assembler = VectorAssembler(inputCols=[test_set.columns[0],
  test_set.columns[10]],outputCol = 'features')
 test_assembled = assembler.transform(test_set)
 test_assembled = test_assembled.select(test_assembled.columns[-1], test_assembled.columns[-2])
+
+# Load trained classification model
+rfp = RandomForestClassificationModel.load('path/model')
