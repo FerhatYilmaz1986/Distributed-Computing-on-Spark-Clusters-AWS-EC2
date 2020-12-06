@@ -33,3 +33,4 @@ rfp = RandomForestClassificationModel.load('RF_model')
 predictions = rfp.transform(test_assembled)
 
 #Evaluate model performance
+multi_evaluator = MulticlassClassificationEvaluator(labelCol = test_assembled.columns[-1], metricName = 'f1')
