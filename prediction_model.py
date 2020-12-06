@@ -28,4 +28,8 @@ test_assembled = test_assembled.select(test_assembled.columns[-1], test_assemble
 
 # Load trained classification model
 rfp = RandomForestClassificationModel.load('RF_model')
+
+#Predict classes of new data
 predictions = rfp.transform(test_assembled)
+
+#Evaluate model performance
