@@ -4,6 +4,7 @@ from pyspark import SparkContext, SparkConf
 from pyspark.sql.session import SparkSession
 from pyspark.ml.classification import RandomForestClassificationModel
 from pyspark.ml.feature import VectorAssembler
+from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 import sys
 
 #Create and connect to spark session, read data given in docker command
