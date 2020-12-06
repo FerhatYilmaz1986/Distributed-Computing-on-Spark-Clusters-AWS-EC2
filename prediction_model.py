@@ -26,4 +26,5 @@ test_assembled = assembler.transform(test_set)
 test_assembled = test_assembled.select(test_assembled.columns[-1], test_assembled.columns[-2])
 
 # Load trained classification model
-rfp = RandomForestClassificationModel.load('path/model')
+rfp = RandomForestClassificationModel.load('RF_model')
+predictions = rfp.transform(test_assembled)
