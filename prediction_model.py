@@ -34,3 +34,4 @@ predictions = rfp.transform(test_assembled)
 
 #Evaluate model performance
 multi_evaluator = MulticlassClassificationEvaluator(labelCol = test_assembled.columns[-1], metricName = 'f1')
+print('F-1 Score of the classification model:', multi_evaluator.evaluate(predictions))
