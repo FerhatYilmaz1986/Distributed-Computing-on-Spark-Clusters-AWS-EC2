@@ -29,6 +29,7 @@ assembler = VectorAssembler(inputCols=[training_set.columns[0],
  training_set.columns[9],
  training_set.columns[10]],outputCol = 'features')
 training_assembled = assembler.transform(training_set)
+train = training_assembled.select(training_assembled.columns[-1], training_assembled.columns[-2])
 
 assembler = VectorAssembler(inputCols=[validation_set.columns[0],
  validation_set.columns[1],
@@ -46,4 +47,4 @@ validation = validation_assembled.select(validation_assembled.columns[-1], valid
 
 #Build and fit classification model
 rf = RandomForestClassifier(labelCol=train.columns[-1],featuresCol='features',numTrees=50,maxDepth=15)
-
+rf_model = rf.fit(train)
