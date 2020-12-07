@@ -48,3 +48,6 @@ validation = validation_assembled.select(validation_assembled.columns[-1], valid
 #Build and fit classification model
 rf = RandomForestClassifier(labelCol=train.columns[-1],featuresCol='features',numTrees=50,maxDepth=15)
 rf_model = rf.fit(train)
+
+#Predict on test data
+rf_predictions = rf_model.transform(validation)
