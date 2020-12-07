@@ -30,3 +30,16 @@ assembler = VectorAssembler(inputCols=[training_set.columns[0],
  training_set.columns[10]],outputCol = 'features')
 training_assembled = assembler.transform(training_set)
 
+assembler = VectorAssembler(inputCols=[validation_set.columns[0],
+ validation_set.columns[1],
+ validation_set.columns[2],
+ validation_set.columns[3],
+ validation_set.columns[4],
+ validation_set.columns[5],
+ validation_set.columns[6],
+ validation_set.columns[7],
+ validation_set.columns[8],
+ validation_set.columns[9],
+ validation_set.columns[10]],outputCol = 'features')
+validation_assembled = assembler.transform(validation_set)
+validation = validation_assembled.select(validation_assembled.columns[-1], validation_assembled.columns[-2])
