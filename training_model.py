@@ -13,5 +13,20 @@ from pyspark.ml.classification import MultilayerPerceptronClassifier
 spark = SparkSession.builder.master('spark://<hostip>:7077').appName('training_model').getOrCreate()
 
 #Read data into dataframes
-training_set = spark.read.csv("TrainingDataset.csv", header=True, inferSchema= True, sep=';')
-validation_set = spark.read.csv("ValidationDataset.csv", header=True, inferSchema= True, sep=';')
+training_set = spark.read.csv("/home/ec2-user/TrainingDataset.csv", header=True, inferSchema= True, sep=';')
+validation_set = spark.read.csv("/home/ec2-user/ValidationDataset.csv", header=True, inferSchema= True, sep=';')
+
+#Create feature vectors for training and test sets
+assembler = VectorAssembler(inputCols=[training_set.columns[0],
+ training_set.columns[1],
+ training_set.columns[2],
+ training_set.columns[3],
+ training_set.columns[4],
+ training_set.columns[5],
+ training_set.columns[6],
+ training_set.columns[7],
+ training_set.columns[8],
+ training_set.columns[9],
+ training_set.columns[10]],outputCol = 'features')
+training_assembled = assembler.transform(training_set)
+
