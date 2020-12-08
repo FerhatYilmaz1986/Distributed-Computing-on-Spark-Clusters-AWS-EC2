@@ -55,3 +55,9 @@ rf_predictions = rf_model.transform(validation)
 #Evaluate results using F-1 Score
 multi_evaluator = MulticlassClassificationEvaluator(labelCol = train.columns[-1], metricName = 'f1')
 print('RF :', multi_evaluator.evaluate(rf_predictions))
+
+#Save model to use in prediction
+rf_model.save('/home/ec2-user/RF_model')
+
+#Stop spark session
+spark.stop()
