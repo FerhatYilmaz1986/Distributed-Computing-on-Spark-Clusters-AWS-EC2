@@ -11,3 +11,8 @@ RUN python3 -V
 
 ENV PYSPARK_DRIVER_PYTHON python3
 ENV PYSPARK_PYTHON python3
+
+RUN pip3 install --upgrade pip
+RUN pip3 install numpy panda
+RUN pip3 install pyspark
+RUN python3 -c "import numpy as np"
