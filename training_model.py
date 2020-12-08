@@ -51,3 +51,7 @@ rf_model = rf.fit(train)
 
 #Predict on test data
 rf_predictions = rf_model.transform(validation)
+
+#Evaluate results using F-1 Score
+multi_evaluator = MulticlassClassificationEvaluator(labelCol = train.columns[-1], metricName = 'f1')
+print('RF :', multi_evaluator.evaluate(rf_predictions))
