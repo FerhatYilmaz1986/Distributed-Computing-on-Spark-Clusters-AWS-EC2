@@ -1,1 +1,4 @@
-
+## Lanch and connect to EC2
+* launch an Amazon EC2 instance (Amazon Linux 2 AMI (HVM), SSD Volume Type)
+* save pem file
+* pem file too open
